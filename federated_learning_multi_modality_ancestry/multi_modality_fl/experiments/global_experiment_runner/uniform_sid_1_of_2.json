@@ -1,0 +1,4 @@
+{
+    "data_path": "/Users/benjamindanek/Downloads/cell_patterns_submission_materials/federated_learning_multi_modality_ancestry/multi_modality_fl/experiments/global_experiment_runner/client_training_1_stratified.h5",
+    "valid_path": "/Users/benjamindanek/Downloads/cell_patterns_submission_materials/federated_learning_multi_modality_ancestry/multi_modality_fl/experiments/global_experiment_runner/client_validation_1_stratified.h5"
+}
