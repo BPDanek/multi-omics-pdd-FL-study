@@ -79,7 +79,7 @@ federated_learning_multi_modality_ancestry/multi_modality_fl/results/manual_expe
 federated_learning_multi_modality_ancestry/multi_modality_fl/results/manual_experiments_uniform_non_strat/
 federated_learning_multi_modality_ancestry/multi_modality_fl/results/manual_experiments_linear_non_strat/
 ```
-Results are written for each $fold_idx$, and for each dataset (internal, external). For the full suite of experiments, all 6 folds, there should be 6 `.csv` files for each test set in each of the above directories.
+Results are written for each `fold_idx`, and for each dataset (internal, external). For the full suite of experiments, all 6 folds, there should be 6 `.csv` files for each test set in each of the above directories.
 
 To generate figures, run the file:
 ```
