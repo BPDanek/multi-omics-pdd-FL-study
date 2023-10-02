@@ -2,8 +2,9 @@
 Federated Learning for multi-omics: a performance evaluation in Parkinson’s disease 
 
 ## prerequisites
+* conda version 23.5.0
 * operating system: MacOS Ventura
-* miniconda installed on machine
+* 20GB of RAM, 8 core CPU
 
 ## install experiment packages and dependencies
 `conda env create -f environment.yml -n multi_omics_pdd_fl`
