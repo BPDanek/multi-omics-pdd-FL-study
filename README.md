@@ -6,6 +6,21 @@ Federated Learning for multi-omics: a performance evaluation in Parkinson’s di
 * operating system: MacOS Ventura
 * 20GB of RAM, 8 core CPU
 
+## setup data file structure
+From the `DATASET_PATH` the assumed structure of the experiments is
+```
+.
+├── Combined_G1E5_O1E2
+│   └── PPMI-genetic_p1E5_omic_p1E2.dataForML.h5
+├── Validation
+    └── validate-PDBP-genetic_p1E5_omic_p1E2.dataForML.h5
+```
+These files can be produced by reproducing the processing approach from 
+```
+Makarious, M.B., Leonard, H.L., Vitale, D. et al. Multi-modality machine learning predicting Parkinson’s disease. npj Parkinsons Dis. 8, 35 (2022). https://doi.org/10.1038/s41531-022-00288-w
+```
+Available publicly at: https://github.com/GenoML/GenoML_multimodal_PD/
+
 ## install experiment packages and dependencies
 `conda env create -f environment.yml -n multi_omics_pdd_fl`
 This code will install dependencies listed in environment.yml, and create a new `Python 3.10.12` environment.
