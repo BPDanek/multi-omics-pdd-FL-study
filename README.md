@@ -81,8 +81,6 @@ federated_learning_multi_modality_ancestry/multi_modality_fl/results/manual_expe
 ```
 Results are written for each `fold_idx`, and for each dataset (internal, external). For the full suite of experiments, all 6 folds, there should be 6 `.csv` files for each test set in each of the above directories.
 
-To generate figures, run the file:
-```
-python multi_modality_fl/results/global_experiment_plots.py
-```
-Figures and tables will be outputted in the folder `multi_modality_fl/results/generated_figures_tables`.
+To generate figures, run the notebook: `federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb`
+
+Figures and tables will be outputted in the folder `multi_modality_fl/results/generated_figures_tables`. A fully rendered run of the notebook is available [here](federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb)
