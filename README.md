@@ -3,7 +3,7 @@ Federated Learning for multi-omics: a performance evaluation in Parkinson’s di
 
 ## prerequisites
 * conda version 23.5.0
-* operating system: MacOS Ventura
+* operating system: Ubuntu, CentOS, MacOS
 * 20GB of RAM, 8 core CPU
 
 ## setup data file structure
