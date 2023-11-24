@@ -86,7 +86,7 @@ To generate figures, run the notebook: `federated_learning_multi_modality_ancest
 Figures and tables will be outputted in the folder `multi_modality_fl/results/generated_figures_tables`. A fully rendered run of the notebook is available [here](federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb)
 
 ## Features
-The full list of features used in the Parkinson's disease classification task is available in the `features.csv` column. Details on how features were generated, are referenced in the paper, and comprehensively explained in [1]
+The full list of features used in the Parkinson's disease classification task is available in the [features csv file](https://github.com/BPDanek/multi-omics-pdd-FL-study/blob/main/features.csv). Details on how features were generated, are referenced in the paper, and comprehensively explained in [1]
 
 The top features, measured by feature importance per [1] (figure 4).
 
