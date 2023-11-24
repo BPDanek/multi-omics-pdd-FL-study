@@ -89,32 +89,33 @@ Figures and tables will be outputted in the folder `multi_modality_fl/results/ge
 The full list of features used in the Parkinson's disease classification task is available in the `features.csv` column. Details on how features were generated, are referenced in the paper, and comprehensively explained in [1]
 
 The top features, measured by feature importance per [1] (figure 4).
-| 0               |
-|:----------------|
-| AGE             |
-| MALE            |
-| FAMILY_HISTORY  |
-| UPSIT           |
-| InfAJ           |
-| PRS90           |
-| ENSG00000153976 |
-| rs10835060      |
-| ENSG00000182447 |
-| ENSG00000132780 |
-| ENSG00000197591 |
-| ENSG00000140478 |
-| ENSG00000072609 |
-| ENSG00000101605 |
-| ENSG00000100079 |
-| ENSG00000189430 |
-| ENSG00000105792 |
-| ENSG00000180530 |
-| ENSG00000136560 |
-| ENSG00000204248 |
-| ENSG00000165806 |
-| ENSG00000184260 |
-| rs4238361       |
-| ENSG00000162739 |
+
+| Feature ID      | Feature Source     |
+|:----------------|:-------------------|
+| AGE             | Clinico-demographic|
+| MALE            | Clinico-demographic|
+| FAMILY_HISTORY  | Clinico-demographic|
+| UPSIT           | Clinico-demographic|
+| InfAJ           | Clinico-demographic|
+| PRS90           | Genetic            |
+| ENSG00000153976 | Transcriptomic     |
+| rs10835060      | Genetic            |
+| ENSG00000182447 | Transcriptomic     |
+| ENSG00000132780 | Transcriptomic     |
+| ENSG00000197591 | Transcriptomic     |
+| ENSG00000140478 | Transcriptomic     |
+| ENSG00000072609 | Transcriptomic     |
+| ENSG00000101605 | Transcriptomic     |
+| ENSG00000100079 | Transcriptomic     |
+| ENSG00000189430 | Transcriptomic     |
+| ENSG00000105792 | Transcriptomic     |
+| ENSG00000180530 | Transcriptomic     |
+| ENSG00000136560 | Transcriptomic     |
+| ENSG00000204248 | Transcriptomic     |
+| ENSG00000165806 | Transcriptomic     |
+| ENSG00000184260 | Transcriptomic     |
+| rs4238361       | Genetic            |
+| ENSG00000162739 | Transcriptomic     |
 
 References:
 1. Makarious, Mary B., Hampton L. Leonard, Dan Vitale, Hirotaka Iwaki, Lana Sargent, Anant Dadu, Ivo Violich, et al. 2022. “Multi-Modality Machine Learning Predicting Parkinson’s Disease.” Npj Parkinson’s Disease 8 (1): 35.
