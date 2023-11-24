@@ -1,12 +1,12 @@
 # FL-for-multi-omics-pdd
 Federated Learning for multi-omics: a performance evaluation in Parkinson’s disease 
 
-## prerequisites
+## Prerequisites
 * conda version 23.5.0
 * operating system: Red Hat Enterprise Linux, CentOS, Ubuntu, MacOS
 * 20GB of RAM, 8 core CPU
 
-## setup data file structure
+## Setup Data File Structure
 From the `DATASET_PATH` the assumed structure of the experiments is
 ```
 .
@@ -21,7 +21,7 @@ Makarious, M.B., Leonard, H.L., Vitale, D. et al. Multi-modality machine learnin
 ```
 Available publicly at: https://github.com/GenoML/GenoML_multimodal_PD/
 
-## install experiment packages and dependencies
+## Install Experiment Packages and Dependencies
 `conda env create -f environment.yml -n multi_omics_pdd_fl`
 This code will install dependencies listed in environment.yml, and create a new `Python 3.10.12` environment.
 
@@ -34,7 +34,7 @@ You can tell if you have other conda environments active in the shell:
 ```
 Indicates the environment "base" is active, in addition to the environment (multi_omics_pdd_fl). If you enter the command `conda deactivate` twice, both environments will be popped. Then you can activate solely the one you want active. This "base" environment is the install default from conda, and tends to be active when a new shell window opens. 
 
-## run the experiments
+## Run The Experiments
 Before running experiments, the variables `REPO_PARENT` and `DATASET_PATH` must be updated to whatever values are meaningful for the test machine. Once these values have been set, the experiments can be run.
 * `REPO_PARENT` is used to define the path of the folder which contains this gith repository.
 * `DATASET_PATH` is used to define the folder which includes the dataasets used for experimentation.
@@ -49,7 +49,7 @@ To control the simulation outputs, one will need to set the logging configuratio
 https://nvflare.readthedocs.io/en/2.3.0/user_guide/logging_configuration.html
 https://flower.dev/docs/framework/how-to-configure-logging.html
 
-###  configure the experiments
+### Configure The Experiments
 To modify the experiment suite, adjust the series of experiments run in the `multi_modality_fl/experiment_runner/run_experiments.py` file. This interface also allows settinghyper parameters for experiment runs.
 The function 
 ```
@@ -72,7 +72,7 @@ runs several FL algorithms side-by-side. These algorithms share the same paramet
 |split_method| the split method used for distributing clients (ie uniform, linear)|
 |stratified| whether to use stratified sampling (true == stratified sampling, false == random sampling without stratification)|
 
-## visualizing experiment results
+## Visualizing Experiment Results
 Experiment results are written to the directories:
 ```
 federated_learning_multi_modality_ancestry/multi_modality_fl/results/manual_experiments_uniform_strat/
@@ -84,3 +84,37 @@ Results are written for each `fold_idx`, and for each dataset (internal, externa
 To generate figures, run the notebook: `federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb`
 
 Figures and tables will be outputted in the folder `multi_modality_fl/results/generated_figures_tables`. A fully rendered run of the notebook is available [here](federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb)
+
+## Features
+The full list of features used in the Parkinson's disease classification task is available in the `features.csv` column. Details on how features were generated, are referenced in the paper, and comprehensively explained in [1]
+
+The top features, measured by feature importance per [1] (figure 4).
+| 0               |
+|:----------------|
+| AGE             |
+| MALE            |
+| FAMILY_HISTORY  |
+| UPSIT           |
+| InfAJ           |
+| PRS90           |
+| ENSG00000153976 |
+| rs10835060      |
+| ENSG00000182447 |
+| ENSG00000132780 |
+| ENSG00000197591 |
+| ENSG00000140478 |
+| ENSG00000072609 |
+| ENSG00000101605 |
+| ENSG00000100079 |
+| ENSG00000189430 |
+| ENSG00000105792 |
+| ENSG00000180530 |
+| ENSG00000136560 |
+| ENSG00000204248 |
+| ENSG00000165806 |
+| ENSG00000184260 |
+| rs4238361       |
+| ENSG00000162739 |
+
+References:
+1. Makarious, Mary B., Hampton L. Leonard, Dan Vitale, Hirotaka Iwaki, Lana Sargent, Anant Dadu, Ivo Violich, et al. 2022. “Multi-Modality Machine Learning Predicting Parkinson’s Disease.” Npj Parkinson’s Disease 8 (1): 35.
