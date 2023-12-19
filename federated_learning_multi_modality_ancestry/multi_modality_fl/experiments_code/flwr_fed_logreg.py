@@ -1,3 +1,12 @@
+import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 import math
 import joblib
 from typing import Tuple, Union, List, Dict
@@ -5,20 +14,17 @@ import numpy as np
 import openml
 import flwr as fl
 import warnings
-import sys
-import os
 import json
-
 from sklearn import metrics
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import log_loss
 
 XY = Tuple[np.ndarray, np.ndarray]
 Dataset = Tuple[XY, XY]
+
 LogRegParams = Union[XY, Tuple[np.ndarray]]
 XYList = List[XY]
 
@@ -49,10 +55,10 @@ def computeAUCPR(y_true, y_pred):
     precision, recall, _ = metrics.precision_recall_curve(y_true, y_pred[:, 1])
     return metrics.auc(recall, precision)
 
-def run_fed_logreg_experiment(repo_parent, current_experiment: GlobalExperimentsConfiguration, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
+def run_fed_logreg_experiment(REPO_PARENT, current_experiment: GlobalExperimentsConfiguration, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
 
-    score_save_path = f'{repo_parent}/federated_learning_multi_modality_ancestry/multi_modality_fl/experiments/flwr_fed_logreg.json'
-    model_save_path = f'{repo_parent}/federated_learning_multi_modality_ancestry/multi_modality_fl/experiments/logregmodel.joblib'
+    score_save_path = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments" / "flwr_fed_logreg.json")
+    model_save_path = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments" / "logregmodel.joblib")
 
     # Define Flower client
     class LogRegClient(fl.client.NumPyClient):

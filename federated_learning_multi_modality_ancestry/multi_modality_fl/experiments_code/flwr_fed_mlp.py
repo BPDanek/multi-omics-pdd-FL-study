@@ -1,3 +1,12 @@
+import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 import math
 import joblib
 from typing import Tuple, Union, List, Dict
@@ -5,13 +14,10 @@ import numpy as np
 import openml
 import flwr as fl
 import warnings
-import sys
-import os
 
 from sklearn import metrics
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
 
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import log_loss
@@ -25,7 +31,7 @@ def computeAUCPR(y_true, y_pred):
     precision, recall, _ = metrics.precision_recall_curve(y_true, y_pred[:, 1])
     return metrics.auc(recall, precision)
 
-def run_fed_mlp_experiment(repo_parent, current_experiment: GlobalExperimentsConfiguration, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
+def run_fed_mlp_experiment(REPO_PARENT, current_experiment: GlobalExperimentsConfiguration, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
 
     dummy_x = np.random.rand(100, 673)
     dummy_y = np.random.randint(2, size=100)    
@@ -41,8 +47,8 @@ def run_fed_mlp_experiment(repo_parent, current_experiment: GlobalExperimentsCon
         'label_binerizer_': dummy._label_binarizer,
     }
 
-    score_save_path = f'{repo_parent}/federated_learning_multi_modality_ancestry/multi_modality_fl/experiments/flwr_fed_mlp.json'
-    model_save_path = f'{repo_parent}/federated_learning_multi_modality_ancestry/multi_modality_fl/experiments/mlpmodel.joblib'
+    score_save_path = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments" / "flwr_fed_mlp.json")
+    model_save_path = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments" / "mlpmodel.joblib")
 
     # copied from sklearn.uitls.validaiton.py
     import numbers

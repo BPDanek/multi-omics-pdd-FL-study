@@ -1,8 +1,15 @@
+import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 from math import ceil
 import pandas as pd
 import numpy as np
-import sys
-import os
 import time
 import xgboost
 from sklearn import discriminant_analysis, ensemble
@@ -14,8 +21,7 @@ from sklearn import neural_network
 from sklearn import svm
 import collections
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
 
 hyper_param_logs_internal = []
 hyper_param_logs_external = []

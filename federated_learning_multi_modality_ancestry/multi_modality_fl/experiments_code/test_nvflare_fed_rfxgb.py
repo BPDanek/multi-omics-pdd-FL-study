@@ -1,10 +1,16 @@
-import xgboost as xgb
-import sys
 import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
+import xgboost as xgb
 import numpy as np
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration
 
 def test_fed_rfxgb_experiment(current_experiment: GlobalExperimentsConfiguration, model_path: str, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
 

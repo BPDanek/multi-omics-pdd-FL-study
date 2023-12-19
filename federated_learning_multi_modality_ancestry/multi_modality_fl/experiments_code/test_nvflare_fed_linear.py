@@ -1,5 +1,12 @@
-
 import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 from typing import Any, Callable
 import pandas as pd
 import shutil
@@ -9,11 +16,9 @@ import logging
 # from nvflare.private.fed.app.simulator.simulator_runner import SimulatorRunner
 from joblib import load
 from sklearn.linear_model import SGDClassifier
-import sys
 import numpy as np
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration
 
 logging.basicConfig(level=logging.ERROR)
 
