@@ -1,17 +1,21 @@
-
-
 import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 import pandas as pd
 import shutil
-import sys
 from typing import Any, Callable
 
 from nvflare.apis.fl_constant import JobConstants
 
 from nvflare.private.fed.app.simulator.simulator_runner import SimulatorRunner  
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
 
 
 def run_fed_rfxgb_experiment(current_experiment: GlobalExperimentsConfiguration, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
@@ -178,7 +182,7 @@ def run_fed_rfxgb_experiment(current_experiment: GlobalExperimentsConfiguration,
 
     # 3. copy over custom contents for this experiment
     # source
-    custom_data = os.path.join(os.getcwd(), "multi_modality_fl", "models", "nvflare", "xgboost_random_forest_custom")
+    custom_data = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "models" / "nvflare" / "xgboost_random_forest_custom")
 
     # destination
     base_job_custom = os.path.join(base_job_root, "custom")

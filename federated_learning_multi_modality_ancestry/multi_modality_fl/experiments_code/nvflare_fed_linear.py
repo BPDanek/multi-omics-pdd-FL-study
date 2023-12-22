@@ -1,5 +1,12 @@
-
 import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 from typing import Any, Callable
 import pandas as pd
 import shutil
@@ -9,11 +16,9 @@ from sklearn.metrics import roc_auc_score
 from nvflare.private.fed.app.simulator.simulator_runner import SimulatorRunner
 from joblib import load
 from sklearn.linear_model import SGDClassifier
-import sys
 logging.basicConfig(level=logging.ERROR)
 
-sys.path.append(os.path.abspath('.'))
-from multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json, read_json
 
 def run_fed_linear_experiments(current_experiment: GlobalExperimentsConfiguration, fold_idx: int, num_clients: int, split_method: str, num_rounds: int, stratified: bool, num_local_rounds: int, proximal_mu: float, client_lr: float):
 
@@ -183,7 +188,7 @@ def run_fed_linear_experiments(current_experiment: GlobalExperimentsConfiguratio
 
     # 3. copy over custom contents for this experiment
     # source
-    custom_data = os.path.join(os.getcwd(), "multi_modality_fl", "models", "nvflare", "linear_custom")
+    custom_data = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "models" / "nvflare" / "linear_custom")
 
     # destination
     base_job_custom = os.path.join(base_job_root, "custom")

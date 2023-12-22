@@ -1,4 +1,12 @@
 import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 import math
 import argparse
 from typing import Dict, List, Tuple
@@ -8,7 +16,6 @@ import tensorflow as tf
 import flwr as fl
 from flwr.common import Metrics
 # from flwr.simulation.ray_transport import enable_tf_gpu_growth
-
 
 # Make TensorFlow logs less verbose
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"

@@ -1,7 +1,15 @@
+import os
+import sys
+from pathlib import Path
+
+REPO_PARENT = Path(__file__).parents[3]
+
+sys.path.append(os.path.abspath("."))
+sys.path.append(str(REPO_PARENT))
+
 from functools import lru_cache
 import itertools
 import json
-import os
 import random
 from typing import Any, Callable, Dict, List, Tuple, Union
 import pandas as pd
@@ -226,7 +234,7 @@ class GlobalExperimentsConfiguration:
 
     def set_fold(self, fold_idx: int):
         """Use the provided `fold_idx` as the holdout dataset, use the rest in training
-
+f
         Args:
             fold_idx: the fold which is the holdout dataset
 
