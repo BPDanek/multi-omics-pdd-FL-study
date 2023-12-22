@@ -7,27 +7,20 @@ REPO_PARENT = Path(__file__).parents[3]
 sys.path.append(os.path.abspath("."))
 sys.path.append(str(REPO_PARENT))
 
-import itertools
-import json
 import shutil
-from tqdm import tqdm
 import errno
 import signal
 import functools
 import logging
 import argparse
 
-from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration, write_json
+from federated_learning_multi_modality_ancestry.multi_modality_fl.utils.data_management import GlobalExperimentsConfiguration
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.baseline import run_baseline_experiments
-
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.test_nvflare_fed_linear import test_fed_linear_experiment
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.nvflare_fed_linear import run_fed_linear_experiments
-
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.nvflare_fed_rfxgb import run_fed_rfxgb_experiment
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.test_nvflare_fed_rfxgb import test_fed_rfxgb_experiment
-
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.flwr_fed_logreg import run_fed_logreg_experiment
-
 from federated_learning_multi_modality_ancestry.multi_modality_fl.experiments_code.flwr_fed_mlp import run_fed_mlp_experiment
 
 logging.basicConfig(level=logging.ERROR)
@@ -44,6 +37,9 @@ class TimeoutError(Exception):
     pass
 
 def timeout(seconds=3, error_message=os.strerror(errno.ETIME)):
+    """
+    Decorator to timeout a function if it runs for too long.
+    """
     def decorator(func):
         def _handle_timeout(signum, frame):
             raise TimeoutError(error_message)
@@ -62,11 +58,15 @@ def timeout(seconds=3, error_message=os.strerror(errno.ETIME)):
 
     return decorator
 
+# The timeout utility can be used to cap the runtime of experiments
 # each of 6 client should run for 2 minutes max, so if we deviate from that by 3 minutes we retry
 # @timeout(2*6*60 + 3*60)
 def run_exp(write_results_path, REPO_PARENT, fold_idx, num_rounds, num_local_rounds, client_lr, site_config, split_method, stratified):
-    
-    # experiments are deterministic
+    """
+    Run the array of FL experiments
+    """
+
+    # define experiments configuration so they are deterministic
     current_experiment = GlobalExperimentsConfiguration(
         base_path = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments"),
         experiment_name = 'global_experiment_runner',
@@ -111,7 +111,10 @@ def run_exp(write_results_path, REPO_PARENT, fold_idx, num_rounds, num_local_rou
     print(write_paths)
 
 def run_baseline_exp(write_results_path, fold_idx):
-    # experiments are deterministic
+    """
+    Run the array of central experiments
+    """
+    # define experiments configuration so they are deterministic
     current_experiment = GlobalExperimentsConfiguration(
         base_path = str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments"),
         experiment_name = 'global_experiment_runner',
@@ -133,8 +136,10 @@ def run_baseline_exp(write_results_path, fold_idx):
     print(write_paths)
 
 
-# delete directories which persist data
 def delete_dir(REPO_PARENT):
+    """
+    delete directories which persist data
+    """
     dir =  str(REPO_PARENT / "federated_learning_multi_modality_ancestry" / "multi_modality_fl" / "experiments")
     if os.path.exists(dir):
         shutil.rmtree(dir)
@@ -209,8 +214,9 @@ def run_series(fold_idx: int):
 
 if __name__ == "__main__":
 
+    # to run the complete set of experiments, you need to call this function for each fold index, representing each of the K folds. (K=6 in our case. This is defined in the `GlobalExperimentsConfiguration` class)
     run_series(0)
-    #run_series(1)
+    run_series(1)
     #run_series(2)
     #run_series(3)
     #run_series(4)
