@@ -370,7 +370,11 @@ def run_fed_rfxgb_experiment(current_experiment: GlobalExperimentsConfiguration,
         n_clients=job_config["n_sites"],
         threads=job_config["n_sites"]
     )
+    
+    current_experiment.time_start()
     run_status = simulator.run()
+    current_experiment.time_end()
+
     print("Simulator finished with run_status", run_status)
 
     # validate simulation

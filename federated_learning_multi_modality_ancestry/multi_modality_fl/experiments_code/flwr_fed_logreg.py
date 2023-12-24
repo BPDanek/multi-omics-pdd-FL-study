@@ -285,7 +285,10 @@ def run_fed_logreg_experiment(REPO_PARENT, current_experiment: GlobalExperiments
                 y_true=y, 
                 y_pred=y_pred[:, 1]
             )
+            current_experiment.log_runtime(fold_idx, f'{f"FedProx μ = {int(proximal_mu)}" if proximal_mu else "FedAvg"} LRClassifier', 'timer', current_experiment.get_time())
 
+    current_experiment.time_start()
     start_server()
+    current_experiment.time_end()
     evaluate_best_model()
     os.remove(score_save_path) # init every run

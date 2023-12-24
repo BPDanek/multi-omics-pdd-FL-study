@@ -367,7 +367,12 @@ def run_fed_linear_experiments(current_experiment: GlobalExperimentsConfiguratio
         n_clients=job_config["n_sites"],
         threads=job_config["n_sites"]
     )
+    
+    current_experiment.time_start()
     run_status = simulator.run()
+    total_time = current_experiment.time_end()
+
+    print("Total time", total_time)
     print("Simulator finished with run_status", run_status)
 
     model_path = os.path.join(workspace_path, "simulate_job", SERVER_VAL, BEST_MODEL_SAVE)
