@@ -26,7 +26,9 @@ Available publicly at: https://github.com/GenoML/GenoML_multimodal_PD/
 This code will install dependencies listed in environment.yml, and create a new `Python 3.10.12` environment.
 
 To activate the environment, run `conda activate multi_omics_pdd_fl`. If you would like to exit the environment call `conda deactivate`.
-Note that it is possible to have several conda environments active simultaneously, which may cause unexpected dependency conflicts. 
+Note that it is possible to have several conda environments active simultaneously, which may cause unexpected dependency conflicts.
+
+You may also use your IDE (VS Code, Jupyter Lab, etc.) to select this conda environment.
 
 You can tell if you have other conda environments active in the shell:
 ```
@@ -34,15 +36,11 @@ You can tell if you have other conda environments active in the shell:
 ```
 Indicates the environment "base" is active, in addition to the environment (multi_omics_pdd_fl). If you enter the command `conda deactivate` twice, both environments will be popped. Then you can activate solely the one you want active. This "base" environment is the install default from conda, and tends to be active when a new shell window opens. 
 
-## Run The Experiments
-Before running experiments, the variables `REPO_PARENT` and `DATASET_PATH` must be updated to whatever values are meaningful for the test machine. Once these values have been set, the experiments can be run.
-* `REPO_PARENT` is used to define the path of the folder which contains this gith repository.
-* `DATASET_PATH` is used to define the folder which includes the dataasets used for experimentation.
-  
-To run the suite of experiments used to generate the paper results, run the following from the repository root: `python multi_modality_fl/experiment_runner/run_experiments.py`
+## Run The Experiments  
+To run the suite of experiments used to generate the paper results, run the following from the GitHub repository's parent directory: `python federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py`
 The shell should look like:
 ```
-(multi_omics_pdd_fl) benjamindanek@bd federated_learning_multi_modality_ancestry % python multi_modality_fl/experiment_runner/run_experiments.py
+(multi_omics_pdd_fl) benjamindanek@bd federated_learning_multi_modality_ancestry % python federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py
 ```
 There will be a series of run logs which are outputted. These huge volume of logs is due to the experiment simulations `NVFlare` and `flower` output. 
 To control the simulation outputs, one will need to set the logging configurations for those packages:
@@ -50,7 +48,7 @@ https://nvflare.readthedocs.io/en/2.3.0/user_guide/logging_configuration.html
 https://flower.dev/docs/framework/how-to-configure-logging.html
 
 ### Configure The Experiments
-To modify the experiment suite, adjust the series of experiments run in the `multi_modality_fl/experiment_runner/run_experiments.py` file. This interface also allows settinghyper parameters for experiment runs.
+To modify the experiment suite, adjust the series of experiments run in the `federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py` file. This interface also allows settinghyper parameters for experiment runs.
 The function 
 ```
 run_baseline_exp
@@ -83,10 +81,10 @@ Results are written for each `fold_idx`, and for each dataset (internal, externa
 
 To generate figures, run the notebook: `federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb`
 
-Figures and tables will be outputted in the folder `multi_modality_fl/results/generated_figures_tables`. A fully rendered run of the notebook is available [here](federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb)
+Figures and tables will be outputted in the folder `federated_learning_multi_modality_ancestry/multi_modality_fl/results/generated_figures_tables`. A fully rendered run of the notebook is available [here](federated_learning_multi_modality_ancestry/multi_modality_fl/results/build_figures.ipynb)
 
 ## Features
-The full list of features used in the Parkinson's disease classification task is available in the [features csv file](https://github.com/BPDanek/multi-omics-pdd-FL-study/blob/main/features.csv). Details on how features were generated, are referenced in the paper, and comprehensively explained in [1]
+The full list of features used in the Parkinson's disease classification task is available in the [features csv file](https://github.com/BPDanek/multi-omics-pdd-FL-study/blob/main/data/features.csv). Details on how features were generated, are referenced in the paper, and comprehensively explained in [1]
 
 The top features, measured by feature importance per [1] (figure 4).
 
@@ -116,6 +114,14 @@ The top features, measured by feature importance per [1] (figure 4).
 | ENSG00000184260 | Transcriptomic     |
 | rs4238361       | Genetic            |
 | ENSG00000162739 | Transcriptomic     |
+
+## Tutorial
+You can find tutorial notebooks that will guide you in reproducing our results. You can find them in the directory `notebooks/tutorial`
+
+Inside the tutorial directory, you will find the following notebooks:
+- 01_installation.ipynb
+- 02_repo_structure.ipynb
+- 03_running_fl.ipynb
 
 References:
 1. Makarious, Mary B., Hampton L. Leonard, Dan Vitale, Hirotaka Iwaki, Lana Sargent, Anant Dadu, Ivo Violich, et al. 2022. “Multi-Modality Machine Learning Predicting Parkinson’s Disease.” Npj Parkinson’s Disease 8 (1): 35.
