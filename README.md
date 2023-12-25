@@ -122,6 +122,7 @@ Inside the tutorial directory, you will find the following notebooks:
 - 01_installation.ipynb
 - 02_repo_structure.ipynb
 - 03_running_fl.ipynb
+= 04_visualizing_results.ipynb
 
 References:
 1. Makarious, Mary B., Hampton L. Leonard, Dan Vitale, Hirotaka Iwaki, Lana Sargent, Anant Dadu, Ivo Violich, et al. 2022. “Multi-Modality Machine Learning Predicting Parkinson’s Disease.” Npj Parkinson’s Disease 8 (1): 35.
