@@ -3,6 +3,7 @@ Federated Learning for multi-omics: a performance evaluation in Parkinson’s di
 
 Benjamin Danek (1,2,3), Mary B. Makarious (4,5,6), Anant Dadu (2,3), Dan Vitale (2,3), Paul Suhwan Lee (2), Mike A Nalls (2,3,4), Jimeng Sun (1,7), Faraz Faghri (2,3,4,*)
 
+```
 1- Department of Computer Science, University of Illinois at Urbana-Champaign, Champaign, IL, 61820, USA
 
 2- Center for Alzheimer's and Related Dementias (CARD), National Institute on Aging and National Institute of Neurological Disorders and Stroke, National Institutes of Health, Bethesda, MD, 20892, USA
@@ -18,6 +19,7 @@ Benjamin Danek (1,2,3), Mary B. Makarious (4,5,6), Anant Dadu (2,3), Dan Vitale 
 7- Carle Illinois College of Medicine, University of Illinois at Urbana-Champaign, Champaign, IL, 61820, USA
 
 *- Lead contact
+```
 
 ## Prerequisites
 * conda version 23.5.0
