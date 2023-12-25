@@ -63,3 +63,5 @@ def test_fed_linear_experiment(current_experiment: GlobalExperimentsConfiguratio
             y_true=y,
             y_pred=y_pred_proba[:, 1]
         )
+
+        current_experiment.log_runtime(fold_idx, 'FedAvg SGDClassifier', 'timer', current_experiment.get_time())

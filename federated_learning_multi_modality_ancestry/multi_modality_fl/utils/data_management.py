@@ -1,6 +1,9 @@
+from datetime import timedelta
 import os
+import pickle
 import sys
 from pathlib import Path
+import time
 
 REPO_PARENT = Path(__file__).parents[3]
 
@@ -651,7 +654,6 @@ f
         write_paths = []
         for raw_experiment_type in self.raw_experiment_logs.keys():
             write_path = os.path.join(path, f"{self.experiment_name}_k{fold_idx}_{raw_experiment_type}.csv")
-            
             if os.path.exists(write_path):
                 prev = pd.read_csv(write_path)
                 current = pd.DataFrame.from_records(self.raw_experiment_logs[raw_experiment_type])
@@ -669,3 +671,35 @@ f
     def computeAUCPR(self, y_true, y_pred):
         precision, recall, _ = metrics.precision_recall_curve(y_true, y_pred[:, 1])
         return metrics.auc(recall, precision)
+
+    def time_start(self):
+        self.start_time = time.time()
+    
+    def time_end(self):
+        self.end_time = time.time()
+
+    def get_time(self):
+        return self.end_time - self.start_time
+
+    def log_runtime(self, fold_idx, algorithm_name, val_name, time: timedelta):
+        if (not hasattr(self, 'runtime_logs')):
+            self.runtime_logs = collections.defaultdict()
+        self.runtime_logs[(fold_idx, algorithm_name, val_name)] = time
+
+    def write_runtime_logs(self, path: str):
+        write_path = os.path.join(path, f"time_logs.pkl")
+            
+        if os.path.exists(write_path):
+            old_runtime_logs = pickle.load(open(write_path, 'rb'))
+            # pdb.set_trace()
+            for key, val in self.runtime_logs.items():
+                old_runtime_logs[key] = val
+                self.runtime_logs = old_runtime_logs
+        else:
+            # pdb.set_trace()
+            os.makedirs(path, exist_ok=True)
+        pickle.dump(self.runtime_logs, open(write_path, 'wb'))
+
+# todo:
+        # evaluate if timer works!
+        # run whole experiment array from start to finish!

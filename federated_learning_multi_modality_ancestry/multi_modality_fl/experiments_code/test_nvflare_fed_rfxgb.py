@@ -59,3 +59,4 @@ def test_fed_rfxgb_experiment(current_experiment: GlobalExperimentsConfiguration
             y_pred=y_pred_proba
         )
 
+        current_experiment.log_runtime(fold_idx, 'FedAvg XGBRFClassifier', 'timer', current_experiment.get_time())

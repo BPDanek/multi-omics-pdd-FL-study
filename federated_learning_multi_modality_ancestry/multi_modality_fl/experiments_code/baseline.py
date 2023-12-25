@@ -132,8 +132,11 @@ def run_baseline_experiments(current_experiment: GlobalExperimentsConfiguration,
         results_val = []
         for algorithm_name, algorithm in algorithms.items():
 
+            current_experiment.time_start()
             algorithm.fit(x_train, y_train)
-            
+            current_experiment.time_end()
+            current_experiment.log_runtime(fold_idx=fold_idx, algorithm_name=algorithm_name, val_name='baseline', time=current_experiment.get_time())
+            # pdb.set_trace()
             row, y_pred, aucpr = evaluate(competing_metrics, algorithm_name, algorithm, x_test, y_test)
             results.append(row)
             current_experiment.log_raw_experiment_results(fold_idx=fold_idx, algorithm_name=algorithm_name, num_clients=0, split_method='central', stratified=False, val_name='internal test', num_rounds=-1, num_local_rounds=-1, client_lr=-1, proximal_mu=-1, y_true=y_test, y_pred=y_pred)
@@ -146,7 +149,7 @@ def run_baseline_experiments(current_experiment: GlobalExperimentsConfiguration,
 
         res = process_results(column_names, results)
         results_val = process_results(column_names, results_val)
-        
+        current_experiment.write_runtime_logs(os.getcwd())
         return res, results_val
 
     # def get_split(dataset, splits):
