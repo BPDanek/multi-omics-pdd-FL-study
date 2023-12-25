@@ -5,19 +5,12 @@ Benjamin Danek (1,2,3), Mary B. Makarious (4,5,6), Anant Dadu (2,3), Dan Vitale 
 
 ```
 1- Department of Computer Science, University of Illinois at Urbana-Champaign, Champaign, IL, 61820, USA
-
 2- Center for Alzheimer's and Related Dementias (CARD), National Institute on Aging and National Institute of Neurological Disorders and Stroke, National Institutes of Health, Bethesda, MD, 20892, USA
-
 3- DataTecnica, Washington, DC, 20037, USA
-
 4- Laboratory of Neurogenetics, National Institute on Aging, National Institutes of Health, Bethesda, MD, 20892, USA
-
 5 - Department of Clinical and Movement Neurosciences, UCL Queen Square Institute of Neurology, London, UK
-
 6 - UCL Movement Disorders Centre, University College London, London, UK
-
 7- Carle Illinois College of Medicine, University of Illinois at Urbana-Champaign, Champaign, IL, 61820, USA
-
 *- Lead contact
 ```
 
