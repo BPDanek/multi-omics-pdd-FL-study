@@ -264,5 +264,5 @@ def run_main_experiments():
 
 if __name__ == "__main__":
 
-    run_main_experiments()
+    # run_main_experiments()
     run_runtime_logger() # todo: final run for K=5 folds
