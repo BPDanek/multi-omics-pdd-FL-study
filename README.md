@@ -1,6 +1,24 @@
 # Federated Learning for multi-omics: a performance evaluation in Parkinson’s disease 
 Federated Learning for multi-omics: a performance evaluation in Parkinson’s disease 
 
+Benjamin Danek (1,2,3), Mary B. Makarious (4,5,6), Anant Dadu (2,3), Dan Vitale (2,3), Paul Suhwan Lee (2), Mike A Nalls (2,3,4), Jimeng Sun (1,7), Faraz Faghri (2,3,4,*)
+
+1- Department of Computer Science, University of Illinois at Urbana-Champaign, Champaign, IL, 61820, USA
+
+2- Center for Alzheimer's and Related Dementias (CARD), National Institute on Aging and National Institute of Neurological Disorders and Stroke, National Institutes of Health, Bethesda, MD, 20892, USA
+
+3- DataTecnica, Washington, DC, 20037, USA
+
+4- Laboratory of Neurogenetics, National Institute on Aging, National Institutes of Health, Bethesda, MD, 20892, USA
+
+5 - Department of Clinical and Movement Neurosciences, UCL Queen Square Institute of Neurology, London, UK
+
+6 - UCL Movement Disorders Centre, University College London, London, UK
+
+7- Carle Illinois College of Medicine, University of Illinois at Urbana-Champaign, Champaign, IL, 61820, USA
+
+*- Lead contact
+
 ## Prerequisites
 * conda version 23.5.0
 * operating system: Red Hat Enterprise Linux, CentOS, Ubuntu, MacOS
@@ -37,10 +55,14 @@ You can tell if you have other conda environments active in the shell:
 Indicates the environment "base" is active, in addition to the environment (multi_omics_pdd_fl). If you enter the command `conda deactivate` twice, both environments will be popped. Then you can activate solely the one you want active. This "base" environment is the install default from conda, and tends to be active when a new shell window opens. 
 
 ## Run The Experiments  
-To run the suite of experiments used to generate the paper results, run the following from the GitHub repository's parent directory: `python federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py`
+To run the suite of experiments used to generate the paper results, run the following from the GitHub repository's parent directory: 
+```
+$ python federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py -d <path to data source>
+```
+
 The shell should look like:
 ```
-(multi_omics_pdd_fl) benjamindanek@bd federated_learning_multi_modality_ancestry % python federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py
+(multi_omics_pdd_fl) benjamindanek@bd federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py -d <path to data source>
 ```
 There will be a series of run logs which are outputted. These huge volume of logs is due to the experiment simulations `NVFlare` and `flower` output. 
 To control the simulation outputs, one will need to set the logging configurations for those packages:
@@ -122,7 +144,7 @@ Inside the tutorial directory, you will find the following notebooks:
 - 01_installation.ipynb
 - 02_repo_structure.ipynb
 - 03_running_fl.ipynb
-= 04_visualizing_results.ipynb
+- 04_visualizing_results.ipynb
 
 References:
 1. Makarious, Mary B., Hampton L. Leonard, Dan Vitale, Hirotaka Iwaki, Lana Sargent, Anant Dadu, Ivo Violich, et al. 2022. “Multi-Modality Machine Learning Predicting Parkinson’s Disease.” Npj Parkinson’s Disease 8 (1): 35.
