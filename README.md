@@ -59,7 +59,7 @@ The shell should look like:
 ```
 (multi_omics_pdd_fl) benjamindanek@bd federated_learning_multi_modality_ancestry/multi_modality_fl/experiment_runner/run_experiments.py -d <path to data source>
 ```
-There will be a series of run logs which are outputted. These huge volume of logs is due to the experiment simulations `NVFlare` and `flower` output. 
+There will be a series of run logs which are outputted. These huge volume of logs to stdout is due to the experiment simulations `NVFlare` and `flower` output. 
 To control the simulation outputs, one will need to set the logging configurations for those packages:
 https://nvflare.readthedocs.io/en/2.3.0/user_guide/logging_configuration.html
 https://flower.dev/docs/framework/how-to-configure-logging.html
